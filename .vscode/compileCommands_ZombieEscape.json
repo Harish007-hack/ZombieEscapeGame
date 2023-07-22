@@ -1,0 +1,122 @@
+[
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\BP_ZombieEscapeGameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\BP_ZombieEscapeGameMode.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\BaseCharacter.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\BaseCharacter.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\PlayerCharacter.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\PlayerCharacter.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscape.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscape.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscape.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscapeCharacter.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscapeCharacter.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscapeGameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscapeGameMode.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscapePlayerController.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	},
+	{
+		"file": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\Source\\ZombieEscape\\ZombieEscapePlayerController.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape\\ZombieEscape.261.rsp"
+		],
+		"directory": "D:\\Unreal Engine\\UE_5.2\\Engine\\Source"
+	}
+]

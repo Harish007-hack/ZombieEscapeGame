@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "ZombieEscapeEditor Editor Win64 Development (ZombieEscape)",
+            "compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "configurationProvider": "epic.ue",
+            "compileCommands": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_ZombieEscape.json"
+        },
+        {
+            "name": "Win32",
+            "compilerPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.32.31326\\bin\\Hostx64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64",
+            "configurationProvider": "epic.ue",
+            "compileCommands": "D:\\Game Development and  Designing\\Unreal EngineSampleProjects\\ZombieEscape\\.vscode\\compileCommands_Default.json"
+        }
+    ],
+    "version": 4
+}
