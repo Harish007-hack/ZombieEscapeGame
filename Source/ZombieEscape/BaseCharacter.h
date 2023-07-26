@@ -39,9 +39,20 @@ protected:
 
 	bool IsRun = false;
 
+	bool IsContinous = false;
+
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 	void Run(const FInputActionValue& Value);
+	void Shoot(const FInputActionValue& Value);
+	void ShootContinous(const FInputActionValue& Value);
+
+	UPROPERTY(BlueprintReadWrite)
+	float AmmosLeft = 30;
+	UPROPERTY(BlueprintReadWrite)
+	float MagazinesLeft = 20;
+
+	
 
 public:	
 	// Called every frame
@@ -53,6 +64,8 @@ public:
 	bool IsDead();
 
 	void HandleDestruction();
+
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 
 private:
 
@@ -75,6 +88,30 @@ private:
 
 	UPROPERTY(EditAnywhere,Category="Input")
 	class UInputAction* RunAction;
+	
+	UPROPERTY(EditAnywhere,Category="Input")
+	class UInputAction* ShootAction;
+	
+	UPROPERTY(EditAnywhere,Category="Input")
+	class UInputAction* ShootContinousAction;
+	
+	UPROPERTY(EditAnywhere,Category="Input")
+	class UInputAction* ReloadAction;
+
+	UPROPERTY(EditDefaultsOnly,Category="Guns")
+	TSubclassOf<class AGun> GunClass;
+
+	UPROPERTY()
+	class AGun* RifleGun;
+
+	FTimerHandle RestartTimer;
+
+	UFUNCTION(BlueprintCallable)
+	void Reload();
+
+	UPROPERTY(EditAnywhere)
+	float RestartDelay = 2.f;
+	
 
 	
 

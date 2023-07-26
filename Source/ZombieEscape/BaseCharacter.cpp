@@ -12,6 +12,7 @@
 #include "Components/SpotLightComponent.h"
 #include "BP_ZombieEscapeGameMode.h"
 #include "Kismet/GameplayStatics.h"
+#include "Gun.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -60,8 +61,10 @@ void ABaseCharacter::BeginPlay()
 
 	CurrentHealth = MaxHealth;
 	CurrentStamina = MaxStamina;
-	// GetWorld()->SpawnActor<>();
+	RifleGun = GetWorld()->SpawnActor<AGun>(GunClass);
 	GetMesh()->HideBoneByName(TEXT("weapon_r"),EPhysBodyOp::PBO_None);
+	RifleGun->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,TEXT("weapon_r"));
+	RifleGun->SetOwner(this);
 	
 }
 
@@ -85,7 +88,7 @@ void ABaseCharacter::Tick(float DeltaTime)
 		}
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("%f"),CurrentHealth);
+	// UE_LOG(LogTemp, Warning, TEXT("%f"),CurrentHealth);
 
 	if(IsDead()){
 		ABP_ZombieEscapeGameMode* ZombieGameMode =  GetWorld()->GetAuthGameMode<ABP_ZombieEscapeGameMode>();
@@ -94,6 +97,15 @@ void ABaseCharacter::Tick(float DeltaTime)
 		}
 		HandleDestruction();
 	}
+
+	// if(AmmosLeft == 0){
+	// 	Reload();
+	// 	// GetWorldTimerManager().SetTimer(RestartTimer,this,&ABaseCharacter::Reload,RestartDelay);
+	// }
+
+
+	UE_LOG(LogTemp, Error, TEXT("%f"),AmmosLeft);
+	UE_LOG(LogTemp, Error, TEXT("%f"),MagazinesLeft);
 
 }
 
@@ -115,9 +127,16 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 		EnhancedInputComponent->BindAction(RunAction,ETriggerEvent::Triggered,this,&ABaseCharacter::Run);
 
 		EnhancedInputComponent->BindAction(RunAction,ETriggerEvent::Completed,this,&ABaseCharacter::Run);
+
+		EnhancedInputComponent->BindAction(ShootContinousAction,ETriggerEvent::Started,this,&ABaseCharacter::ShootContinous);
+
+		EnhancedInputComponent->BindAction(ShootAction,ETriggerEvent::Triggered,this,&ABaseCharacter::Shoot);
+
+		EnhancedInputComponent->BindAction(ReloadAction,ETriggerEvent::Started,this,&ABaseCharacter::Reload);
 	}
 
 }
+
 
 
 void ABaseCharacter::Move(const FInputActionValue& Value)
@@ -158,6 +177,26 @@ void ABaseCharacter::Run(const FInputActionValue& Value)
 	IsRun = Value.Get<bool>();
 }
 
+void ABaseCharacter::Shoot(const FInputActionValue& Value)
+{
+	if(AmmosLeft != 0){
+		if(MagazinesLeft > 0){
+			RifleGun->GunWeaponStash();	
+			AmmosLeft-=1;
+		}
+	}
+
+	
+}
+
+void ABaseCharacter::ShootContinous(const FInputActionValue& Value)
+{
+	IsContinous = !IsContinous;
+	if(IsContinous){
+		UE_LOG(LogTemp, Error, TEXT("Your message"));
+	}
+}
+
 bool ABaseCharacter::IsDead()
 {
 	return CurrentHealth <= 0;
@@ -167,4 +206,19 @@ void ABaseCharacter::HandleDestruction()
 {
 	DetachFromControllerPendingDestroy(); //detaches pawn from controller after death.
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+}
+
+float ABaseCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
+	return Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
+}
+
+void ABaseCharacter::Reload()
+{
+	if(AmmosLeft == 0){
+		if(MagazinesLeft >= 0){
+			AmmosLeft = 30;
+			MagazinesLeft-=1;
+		}
+	}
 }
