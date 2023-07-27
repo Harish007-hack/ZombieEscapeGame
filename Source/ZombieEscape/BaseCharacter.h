@@ -52,6 +52,17 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 	float MagazinesLeft = 20;
 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Inventory-Slots")
+	int SlotNo1 = 0;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Inventory-Slots")
+	int SlotNo2 = 0;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Inventory-Slots")
+	int SlotNo3 = 0;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Inventory-Slots")
+	int SlotNo4 = 0;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Inventory-Slots")
+	int SlotNo5 = 0;
+
 	
 
 public:	
@@ -111,6 +122,8 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float RestartDelay = 2.f;
+
+	
 	
 
 	
