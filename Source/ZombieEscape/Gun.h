@@ -19,24 +19,28 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	UFUNCTION(BlueprintCallable)
-	void GunWeaponStash();
-
-private:
 	UPROPERTY(EditAnywhere)
 	USceneComponent* RootScene;
 	UPROPERTY(EditAnywhere)
 	USkeletalMeshComponent* Mesh;
 
 	
+	bool GunTrace(FHitResult& HitResult, FVector& ShotDirection) const;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// UFUNCTION(BlueprintCallable)
+	virtual void GunWeaponStash();
+
+private:
+	
+	
 	UPROPERTY(EditAnywhere,Category="Weapon Settings")
 	float EndMeters = 1000.f;
 
-	bool GunTrace(FHitResult& HitResult, FVector& ShotDirection) const;
+	
 
 	AController* GetOwnerController() const;
 
@@ -47,5 +51,7 @@ private:
 
 	UPROPERTY(EditAnywhere,Category="Weapon Settings")
 	float Damage = 10.f;
+
+	bool HasBeenShot;
 
 };

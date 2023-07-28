@@ -5,6 +5,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
 #include "Engine/DamageEvents.h"
+#include "BaseCharacter.h"
+#include "TimerManager.h"
+
 
 // Sets default values
 AGun::AGun()
@@ -24,7 +27,7 @@ AGun::AGun()
 void AGun::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -33,6 +36,7 @@ void AGun::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
 
 void AGun::GunWeaponStash()
 {
@@ -43,7 +47,21 @@ void AGun::GunWeaponStash()
 
 	UGameplayStatics::SpawnEmitterAttached(MuzzleFlashParticle,Mesh,TEXT("MuzzleFlashSocket"));
 
-	bool HasBeenShot = GunTrace(HitResult,ShotDirection);
+	// if(Cast<ABaseCharacter>(GetOwner())->IsContinous){
+	// 	GetWorldTimerManager().SetTimer(RestartTimer,10,false);
+		
+	// }
+
+	// float TimerDelay = 10.f;
+
+	// FTimerHandle UnusedHandle;
+	// GetWorldTimerManager().SetTimer(
+	// UnusedHandle, this, &AGun::GunTrace,TimerDelay, false);
+
+	
+
+	HasBeenShot = GunTrace(HitResult,ShotDirection);
+	
 	if(HasBeenShot){
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),HitFlashParticle,HitResult.Location,ShotDirection.Rotation());
 		AActor* HitActor = HitResult.GetActor();
@@ -74,6 +92,10 @@ bool AGun::GunTrace(FHitResult& HitResult, FVector& ShotDirection) const
 	FCollisionQueryParams Params;
 	Params.AddIgnoredActor(this);
 	Params.AddIgnoredActor(GetOwner());
+	// if(Cast<ABaseCharacter>(GetOwner())->IsContinous){
+		// GetWorldTimerManager().SetTimer(TimerHandle,,TimerDelegate10,true);
+	// }
+	
 	return GetWorld()->LineTraceSingleByChannel(HitResult,Location,End,ECollisionChannel::ECC_GameTraceChannel1,Params);
 }
 

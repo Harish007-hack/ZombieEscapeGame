@@ -39,7 +39,7 @@ protected:
 
 	bool IsRun = false;
 
-	bool IsContinous = false;
+	
 
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
@@ -75,6 +75,8 @@ public:
 	bool IsDead();
 
 	void HandleDestruction();
+
+	bool IsContinous = true;
 
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser);
 
@@ -114,8 +116,6 @@ private:
 
 	UPROPERTY()
 	class AGun* RifleGun;
-
-	FTimerHandle RestartTimer;
 
 	UFUNCTION(BlueprintCallable)
 	void Reload();

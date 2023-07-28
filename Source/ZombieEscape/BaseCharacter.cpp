@@ -128,9 +128,9 @@ void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 		EnhancedInputComponent->BindAction(RunAction,ETriggerEvent::Completed,this,&ABaseCharacter::Run);
 
-		EnhancedInputComponent->BindAction(ShootContinousAction,ETriggerEvent::Started,this,&ABaseCharacter::ShootContinous);
-
 		EnhancedInputComponent->BindAction(ShootAction,ETriggerEvent::Triggered,this,&ABaseCharacter::Shoot);
+
+		EnhancedInputComponent->BindAction(ShootContinousAction,ETriggerEvent::Started,this,&ABaseCharacter::ShootContinous);
 
 		EnhancedInputComponent->BindAction(ReloadAction,ETriggerEvent::Started,this,&ABaseCharacter::Reload);
 	}
@@ -180,7 +180,7 @@ void ABaseCharacter::Run(const FInputActionValue& Value)
 void ABaseCharacter::Shoot(const FInputActionValue& Value)
 {
 	if(AmmosLeft != 0){
-		if(MagazinesLeft > 0){
+		if(MagazinesLeft >= 0){
 			RifleGun->GunWeaponStash();	
 			AmmosLeft-=1;
 		}
