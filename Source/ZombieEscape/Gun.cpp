@@ -81,6 +81,11 @@ void AGun::GunWeaponStash()
 
 }
 
+FString AGun::GunType()
+{
+	return TEXT("Rifle");
+}
+
 bool AGun::GunTrace(FHitResult& HitResult, FVector& ShotDirection) const
 {
 	FVector Location;

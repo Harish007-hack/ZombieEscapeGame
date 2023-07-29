@@ -63,6 +63,12 @@ protected:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Inventory-Slots")
 	int SlotNo5 = 0;
 
+
+	bool canShoot = true;
+
+	void SetCanShoot();
+
+	FTimerHandle TimerHandle;
 	
 
 public:	

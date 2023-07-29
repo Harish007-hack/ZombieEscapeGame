@@ -34,6 +34,8 @@ public:
 	// UFUNCTION(BlueprintCallable)
 	virtual void GunWeaponStash();
 
+	virtual FString GunType();
+
 private:
 	
 	

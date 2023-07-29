@@ -13,6 +13,7 @@
 #include "BP_ZombieEscapeGameMode.h"
 #include "Kismet/GameplayStatics.h"
 #include "Gun.h"
+#include "TimerManager.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -64,6 +65,7 @@ void ABaseCharacter::BeginPlay()
 	RifleGun = GetWorld()->SpawnActor<AGun>(GunClass);
 	GetMesh()->HideBoneByName(TEXT("weapon_r"),EPhysBodyOp::PBO_None);
 	RifleGun->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,TEXT("weapon_r"));
+	SlotNo1 = 1;
 	RifleGun->SetOwner(this);
 	
 }
@@ -103,9 +105,14 @@ void ABaseCharacter::Tick(float DeltaTime)
 	// 	// GetWorldTimerManager().SetTimer(RestartTimer,this,&ABaseCharacter::Reload,RestartDelay);
 	// }
 
-
-	UE_LOG(LogTemp, Error, TEXT("%f"),AmmosLeft);
-	UE_LOG(LogTemp, Error, TEXT("%f"),MagazinesLeft);
+	if(IsContinous){
+		
+		UE_LOG(LogTemp, Error, TEXT("%f"),AmmosLeft);
+	}else{
+		UE_LOG(LogTemp, Error, TEXT("Your message"));
+	}
+	
+	UE_LOG(LogTemp, Warning, TEXT("%s"),*RifleGun->GunType());
 
 }
 
@@ -179,13 +186,26 @@ void ABaseCharacter::Run(const FInputActionValue& Value)
 
 void ABaseCharacter::Shoot(const FInputActionValue& Value)
 {
-	if(AmmosLeft != 0){
-		if(MagazinesLeft >= 0){
-			RifleGun->GunWeaponStash();	
-			AmmosLeft-=1;
+	if(canShoot){
+		canShoot = false;
+		if(AmmosLeft != 0){
+			if(MagazinesLeft >= 0){
+				RifleGun->GunWeaponStash();
+				AmmosLeft-=1;
+			}
 		}
+		// GetWorldTimerManager().SetTimer()
+		if(RifleGun->GunType() == TEXT("Rifle")){
+			if(IsContinous){
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,0.1f,false);
+			}else{
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,1.0f,false);
+			}
+		}else{
+			GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,1.0f,false);
+		}
+		
 	}
-
 	
 }
 
@@ -195,6 +215,12 @@ void ABaseCharacter::ShootContinous(const FInputActionValue& Value)
 	if(IsContinous){
 		UE_LOG(LogTemp, Error, TEXT("Your message"));
 	}
+}
+
+void ABaseCharacter::SetCanShoot()
+{
+	canShoot = true;
+	GetWorldTimerManager().ClearTimer(TimerHandle);
 }
 
 bool ABaseCharacter::IsDead()

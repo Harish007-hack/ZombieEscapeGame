@@ -21,6 +21,8 @@ public:
 	// UFUNCTION(BlueprintCallable)
 	virtual void GunWeaponStash() override;
 
+	virtual FString GunType() override;
+
 private:
 	UPROPERTY(EditAnywhere)
 	USceneComponent* ProjectileLaunch;

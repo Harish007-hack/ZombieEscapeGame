@@ -20,3 +20,10 @@ void ALauncherGun::GunWeaponStash()
     auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass,Location,Rotation);
     Projectile->SetOwner(this);
 }
+
+FString ALauncherGun::GunType()
+{
+    Super::GunType();
+
+    return TEXT("Launcher");
+}
