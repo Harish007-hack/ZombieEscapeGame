@@ -69,6 +69,11 @@ protected:
 	void SetCanShoot();
 
 	FTimerHandle TimerHandle;
+
+
+
+
+	
 	
 
 public:	
@@ -117,11 +122,18 @@ private:
 	UPROPERTY(EditAnywhere,Category="Input")
 	class UInputAction* ReloadAction;
 
-	UPROPERTY(EditDefaultsOnly,Category="Guns")
+	UPROPERTY(EditAnywhere,Category="Guns")
 	TSubclassOf<class AGun> GunClass;
+	UPROPERTY(EditAnywhere,Category="Guns")
+	TSubclassOf<class ALauncherGun> LauncherGunClass;
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere)
 	class AGun* RifleGun;
+	
+	UPROPERTY(EditAnywhere)
+	class ALauncherGun* LauncherGun;
+
+	
 
 	UFUNCTION(BlueprintCallable)
 	void Reload();
@@ -129,6 +141,15 @@ private:
 	UPROPERTY(EditAnywhere)
 	float RestartDelay = 2.f;
 
+
+	bool IsWeaponSlotEmpty();
+
+	bool locked = true;
+
+	UFUNCTION(BlueprintCallable)
+	void SpawnRifle();
+	UFUNCTION(BlueprintCallable)
+	void SpawnLauncher();
 	
 	
 

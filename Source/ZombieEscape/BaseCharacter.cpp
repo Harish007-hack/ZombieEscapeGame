@@ -14,6 +14,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Gun.h"
 #include "TimerManager.h"
+#include "LauncherGun.h"
 
 // Sets default values
 ABaseCharacter::ABaseCharacter()
@@ -63,10 +64,13 @@ void ABaseCharacter::BeginPlay()
 	CurrentHealth = MaxHealth;
 	CurrentStamina = MaxStamina;
 	RifleGun = GetWorld()->SpawnActor<AGun>(GunClass);
+	LauncherGun = GetWorld()->SpawnActor<ALauncherGun>(LauncherGunClass);
+	// LauncherGun->SetActorHiddenInGame(true);
+	// LauncherGun->SetOwner(this);
 	GetMesh()->HideBoneByName(TEXT("weapon_r"),EPhysBodyOp::PBO_None);
-	RifleGun->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,TEXT("weapon_r"));
-	SlotNo1 = 1;
-	RifleGun->SetOwner(this);
+	// RifleGun->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,TEXT("weapon_r"));
+	SlotNo1 = 0;
+	// RifleGun->SetOwner(this);
 	
 }
 
@@ -112,7 +116,23 @@ void ABaseCharacter::Tick(float DeltaTime)
 		UE_LOG(LogTemp, Error, TEXT("Your message"));
 	}
 	
-	UE_LOG(LogTemp, Warning, TEXT("%s"),*RifleGun->GunType());
+	// UE_LOG(LogTemp, Warning, TEXT("%s"),*RifleGun->GunType());
+
+	if(IsWeaponSlotEmpty()){
+		RifleGun->SetActorHiddenInGame(true);
+		LauncherGun->SetActorHiddenInGame(true);
+		locked = false;
+	}else{
+		if(SlotNo1 == 1){
+			RifleGun->SetActorHiddenInGame(false);
+		}
+		if(SlotNo1 == 2){
+			LauncherGun->SetActorHiddenInGame(false);
+		}
+		// canShoot = true;
+		// RifleGun->SetActorHiddenInGame(false);
+		locked= true;
+	}
 
 }
 
@@ -186,25 +206,33 @@ void ABaseCharacter::Run(const FInputActionValue& Value)
 
 void ABaseCharacter::Shoot(const FInputActionValue& Value)
 {
-	if(canShoot){
-		canShoot = false;
-		if(AmmosLeft != 0){
-			if(MagazinesLeft >= 0){
-				RifleGun->GunWeaponStash();
-				AmmosLeft-=1;
+	if(locked){
+		if(canShoot){
+			canShoot = false;
+			if(AmmosLeft != 0){
+				if(MagazinesLeft >= 0){
+					if(SlotNo1 ==1){
+						RifleGun->GunWeaponStash();
+					}
+					if(SlotNo1 ==2){
+						LauncherGun->GunWeaponStash();
+					}
+					
+					AmmosLeft-=1;
+				}
 			}
-		}
-		// GetWorldTimerManager().SetTimer()
-		if(RifleGun->GunType() == TEXT("Rifle")){
-			if(IsContinous){
-			GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,0.1f,false);
+			// GetWorldTimerManager().SetTimer()
+			if(RifleGun->GunType() == TEXT("Rifle")){
+				if(IsContinous){
+				GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,0.1f,false);
+				}else{
+				GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,1.0f,false);
+				}
 			}else{
-			GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,1.0f,false);
+				GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,1.0f,false);
 			}
-		}else{
-			GetWorld()->GetTimerManager().SetTimer(TimerHandle,this,&ABaseCharacter::SetCanShoot,1.0f,false);
+			
 		}
-		
 	}
 	
 }
@@ -247,4 +275,31 @@ void ABaseCharacter::Reload()
 			MagazinesLeft-=1;
 		}
 	}
+}
+
+bool ABaseCharacter::IsWeaponSlotEmpty()
+{
+	if(SlotNo1 == 0 && SlotNo2 == 0 && SlotNo3 == 0 && SlotNo4 == 0 && SlotNo5 == 0){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+void ABaseCharacter::SpawnRifle()
+{
+	RifleGun = GetWorld()->SpawnActor<AGun>(GunClass);
+	RifleGun->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,TEXT("weapon_r"));
+	SlotNo1 = 1;
+	RifleGun->SetOwner(this);
+	
+}
+
+void ABaseCharacter::SpawnLauncher()
+{
+	LauncherGun = GetWorld()->SpawnActor<ALauncherGun>(LauncherGunClass);
+	LauncherGun->AttachToComponent(GetMesh(),FAttachmentTransformRules::KeepRelativeTransform,TEXT("weapon_r"));
+	SlotNo1 = 2;
+	LauncherGun->SetOwner(this);
+
 }
