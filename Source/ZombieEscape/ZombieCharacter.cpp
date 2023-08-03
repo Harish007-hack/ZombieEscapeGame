@@ -12,7 +12,7 @@ AZombieCharacter::AZombieCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	GetCapsuleComponent()->InitCapsuleSize(42.f,96.f);
+	GetCapsuleComponent()->InitCapsuleSize(50.f,96.f);
 
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationRoll = false;

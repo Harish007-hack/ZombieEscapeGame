@@ -212,9 +212,11 @@ void ABaseCharacter::Shoot(const FInputActionValue& Value)
 			if(AmmosLeft != 0){
 				if(MagazinesLeft >= 0){
 					if(SlotNo1 ==1){
+						if(RifleGun == nullptr) return;
 						RifleGun->GunWeaponStash();
 					}
 					if(SlotNo1 ==2){
+						// if(LauncherGun == nullptr) return;
 						LauncherGun->GunWeaponStash();
 					}
 					
