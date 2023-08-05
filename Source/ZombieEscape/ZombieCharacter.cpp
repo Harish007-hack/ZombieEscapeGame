@@ -39,6 +39,7 @@ void AZombieCharacter::BeginPlay()
 		}
 	}
 	
+	CurrentHealth = MaxHealth;
 }
 
 // Called every frame
@@ -61,6 +62,24 @@ void AZombieCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	}
 
 }
+
+float AZombieCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
+	float DamageCaused = Super::TakeDamage(DamageAmount,DamageEvent,EventInstigator,DamageCauser);
+
+	CurrentHealth -= DamageCaused;
+
+	if(CurrentHealth <= 0.f){
+		IsDead = true;
+	}
+
+	return DamageCaused;
+}
+
+
+
+
+
 
 void AZombieCharacter::Move(const FInputActionValue& Value)
 {
