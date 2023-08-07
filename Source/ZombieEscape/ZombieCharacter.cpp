@@ -73,6 +73,10 @@ float AZombieCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const
 		IsDead = true;
 	}
 
+	if(IsDead){
+		HandleDestruction();
+	}
+
 	return DamageCaused;
 }
 
@@ -110,3 +114,10 @@ void AZombieCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+
+
+void AZombieCharacter::HandleDestruction()
+{
+	DetachFromControllerPendingDestroy(); //detaches pawn from controller after death.
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+}
